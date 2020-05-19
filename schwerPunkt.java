@@ -8,9 +8,7 @@ public class schwerPunkt {
 	public int r;
 	public int mittel;
 	
-	
-
-
+	//Konstruktor
 	public schwerPunkt(Kugel k1, Kugel k2) {
 		super();
 		this.r = 5/2;
@@ -18,9 +16,9 @@ public class schwerPunkt {
 	}
 
 	public void xPosS(double t, Kugel k1, Kugel k2) {
-		xPosS=Math.abs(k2.xPos-k1.xPos);
+		xPosS=Math.abs((k2.xPos+k2.mittel)-(k1.xPos+k1.mittel));
 		
-		if(xPosS<=1) {
+		if(xPosS<=k2.r+k1.r) {
 			k1.aufprallK(k2, t);
 			k2.aufprallK(k1, t);
 		}
