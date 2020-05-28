@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 public class schwerPunkt {
 	public double xPosS;
+	public int xP;
 	public int r;
 	public int mittel;
 	public double el;
@@ -19,6 +20,7 @@ public class schwerPunkt {
 
 	public void xPosS(double t, Kugel k1, Kugel k2) {
 		xPosS=Math.abs((k2.xPos+k2.mittel)-(k1.xPos+k1.mittel));
+		//this.xP=(int)(1/k1.m+k2.m)*(int)(k1.m*(k1.xPos+k1.mittel)+k2.m*(k2.xPos+k2.mittel));
 		
 		if(xPosS<=k2.r+k1.r) {
 			double v1=k1.v;
@@ -35,11 +37,14 @@ public class schwerPunkt {
 			k1.deltaTime=t;
 			k2.deltaTime=t;
 		}
-		
+	}
+	
+	public void xPSch(Kugel k1, Kugel k2) {
+		//this.xP=(int)(1/k1.m+k2.m)*(int)(k1.m*(k1.xPos+k1.mittel)+k2.m*(k2.xPos+k2.mittel));
 	}
 	
 	public void abbildung(Graphics g) {
 		g.setColor(Color.RED);
-		g.fillOval((int)xPosS, _0_Constants.WINDOW_HEIGHT/2-5/2, 5, 5);
+		g.fillOval(this.xP, _0_Constants.WINDOW_HEIGHT/2-5/2, 5, 5);
 	}
 }
