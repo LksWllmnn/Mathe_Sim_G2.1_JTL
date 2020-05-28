@@ -93,7 +93,7 @@ public class Gruppe_2 {
 			s1.xPosS(time,k1,k2);
 			s1.abbildung(g);
 			s2.xPosS(time,k3, k2);
-			s2.abbildung(g);
+			//s2.abbildung(g);
 			s3.xPosS(time,k3, k1);
 			s3.abbildung(g);
 		}

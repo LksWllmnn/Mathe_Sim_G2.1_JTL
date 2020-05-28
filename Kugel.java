@@ -17,8 +17,9 @@ public class Kugel {
 	public int r;
 	public int mittel;
 	public String name;
+	public double vOri;
 	
-	//Konstruktor2
+	//Konstruktor
 	public Kugel(int startX, double v, double m, String name) {
 		super();
 		this.startX = startX;
@@ -28,6 +29,7 @@ public class Kugel {
 		r=radius();
 		mittel=(int)xPos+r;
 		this.name=name;
+		vOri=v;
 	}
 
 	public int diameter(double m) {

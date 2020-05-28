@@ -21,7 +21,7 @@ public class schwerPunkt {
 	public void xPosS(double t, Kugel k1, Kugel k2) {
 		xPosS=Math.abs((k2.xPos+k2.mittel)-(k1.xPos+k1.mittel));
 		//this.xP=(int)(1/k1.m+k2.m)*(int)(k1.m*(k1.xPos+k1.mittel)+k2.m*(k2.xPos+k2.mittel));
-		this.xP=(int)(1/(k1.m+k2.m)*(k1.m*k1.xPos+k2.m*k2.xPos)+(1/(k1.m+k2.m)*(k1.m*k1.v+k2.m*k2.v))*t);
+		this.xP=(int)(1/(k1.m+k2.m)*(k1.m*(k1.startX+k1.mittel)+k2.m*(k2.startX+k2.mittel))+(1/(k1.m+k2.m)*(k1.m*k1.v+k2.m*k2.v))*(t-k1.deltaTime));
 		
 		if(xPosS<=k2.r+k1.r) {
 			double v1=k1.v;
