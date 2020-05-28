@@ -61,18 +61,18 @@ public class Gruppe_2 {
 		public int weite=_0_Constants.WINDOW_WIDTH;
 		public int höhe= _0_Constants.WINDOW_HEIGHT;
 		//Kugel1
-		Kugel k1= new Kugel(100,160,5,2000);
+		Kugel k1= new Kugel(400,40,3000, "rot");
 		//Kugel2
-		Kugel k2= new Kugel(_0_Constants.WINDOW_WIDTH/2,-160,4,3000);
+		Kugel k2= new Kugel(100,-60,3000, "grün");
 		//Kugel3
-		Kugel k3= new Kugel(_0_Constants.WINDOW_WIDTH-100,-50,7,8000);
+		Kugel k3= new Kugel(700,-50,8000, "blau");
 		
 		//Schwerpunkt zwischen k1 und k2
-		schwerPunkt s1=new schwerPunkt(k2,k1);
+		schwerPunkt s1=new schwerPunkt(k1,k2,1);
 		//Schwerpunkt zwischen k2 und k3
-		schwerPunkt s2=new schwerPunkt(k3,k2);
+		schwerPunkt s2=new schwerPunkt(k3,k2,1);
 		//Schwerpunkt zwischen k1 und k3
-		schwerPunkt s3=new schwerPunkt(k1,k3);
+		schwerPunkt s3=new schwerPunkt(k3,k1,1);
 		
 		
 		//drawing operations should be done in this method
@@ -83,11 +83,11 @@ public class Gruppe_2 {
 			g.setColor(Color.LIGHT_GRAY);
 			g.fillRect(0, 0, weite , höhe);
 
-			k1.xPos(time, "k1", k2,k3);
+			k1.xPos(time, k2,k3);
 			k1.abbildung(g, Color.RED);
-			k2.xPos(time,"k2",k3,k1);
+			k2.xPos(time,k3,k1);
 			k2.abbildung(g, Color.GREEN);
-			k3.xPos(time, "k3",k1,k2);
+			k3.xPos(time,k1,k2);
 			k3.abbildung(g, Color.BLUE);
 			
 			s1.xPosS(time,k1,k2);

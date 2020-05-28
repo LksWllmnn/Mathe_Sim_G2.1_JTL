@@ -6,9 +6,9 @@ import java.awt.Graphics;
 public class Kugel {
 	
 	public int startX;
-	public int v;
+	public double v;
 	public int el;
-	public int m;
+	public double m;
 	public int d;
 	public double time;
 	public double xPos;
@@ -16,36 +16,24 @@ public class Kugel {
 	public int width=_0_Constants.WINDOW_WIDTH;
 	public int r;
 	public int mittel;
-	
-	
-	//Konstruktor1
- 	public Kugel(int startX, int v, int el) {
-		super();
-		this.startX = startX;
-		this.v = v;
-		this.el = el;
-		this.m=10;
-		this.d=diameter(m);
-		r=radius();
-		mittel=(int)xPos+r;
-	}
+	public String name;
 	
 	//Konstruktor2
-	public Kugel(int startX, int v, int el, int m) {
+	public Kugel(int startX, double v, double m, String name) {
 		super();
 		this.startX = startX;
 		this.v = v;
-		this.el = el;
 		this.m = m;
 		this.d=diameter(m);
 		r=radius();
 		mittel=(int)xPos+r;
+		this.name=name;
 	}
 
-	public int diameter(int m) {
+	public int diameter(double m) {
 		// Kreisfläche a=Pi*r^2
 		//Bei doppelter Masse verdoppelt sich Fläche aber nicht radius
-		int a=m;
+		int a=(int)m;
 		int d;
 		d=((int)Math.sqrt(a/Math.PI))*2;
 		return d;
@@ -56,12 +44,18 @@ public class Kugel {
 		return r;
 	}
 	
-	public void xPos(double _t, String name, Kugel kont1, Kugel kont2) {
+	public void xPos(double _t, Kugel kont1, Kugel kont2) {
 		xPos=startX+((_t-deltaTime)*v);
-		if(xPos+d>=width||xPos<=0) {
-			System.out.println(name + " hat die Wand berührt");
+		if(xPos+d>=width) {
+			System.out.println(this.name + " hat die Wand berührt");
 			v=v*-1;
-			startX=(int)xPos;
+			startX=(int)xPos-1;
+			deltaTime=_t;
+		}
+		if(xPos<=0) {
+			System.out.println(this.name + " hat die Wand berührt");
+			v=v*-1;
+			startX=(int)xPos+1;
 			deltaTime=_t;
 		}
 	}
@@ -69,12 +63,5 @@ public class Kugel {
 	public void abbildung(Graphics g, Color c) {
 		g.setColor(c);
 		g.fillOval((int)xPos, _0_Constants.WINDOW_HEIGHT/2-d/2, d, d);
-	}
-	
-	public void aufprallK(Kugel k2, double t) {
-		System.out.println("Kugel 1 hat Kugel 2 berührt");
-		this.v=v*-1;
-		startX=(int)xPos;
-		deltaTime=t;
 	}
 }
