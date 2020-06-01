@@ -11,6 +11,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 public class Gruppe_2 {
+	
+	/**
+	 * Gruppe 2 wurde aus der Vorlesungs Klasse herauskommentiert
+	 * 
+	 */
 
 		private static JFrame frame;
 
@@ -61,14 +66,14 @@ public class Gruppe_2 {
 		public int weite=_0_Constants.WINDOW_WIDTH;
 		public int höhe= _0_Constants.WINDOW_HEIGHT;
 		//Kugel1
-		Kugel k1= new Kugel(400,40,3000, "rot");
+		Kugel k1= new Kugel(weite/2,0,5000, "rot");
 		//Kugel2
-		Kugel k2= new Kugel(100,-60,3000, "grün");
+		Kugel k2= new Kugel(50,30,5000, "grün");
 		//Kugel3
-		Kugel k3= new Kugel(700,-50,8000, "blau");
+		Kugel k3= new Kugel(weite-50,0,3000, "blau");
 		
 		//Schwerpunkt zwischen k1 und k2
-		schwerPunkt s1=new schwerPunkt(k1,k2,1);
+		schwerPunkt s1=new schwerPunkt(k1,k2,0);
 		//Schwerpunkt zwischen k2 und k3
 		schwerPunkt s2=new schwerPunkt(k3,k2,1);
 		//Schwerpunkt zwischen k1 und k3
@@ -83,17 +88,17 @@ public class Gruppe_2 {
 			g.setColor(Color.LIGHT_GRAY);
 			g.fillRect(0, 0, weite , höhe);
 
-			k1.xPos(time, k2,k3);
+			k1.xPos(time);
 			k1.abbildung(g, Color.RED);
-			k2.xPos(time,k3,k1);
+			k2.xPos(time);
 			k2.abbildung(g, Color.GREEN);
-			k3.xPos(time,k1,k2);
+			k3.xPos(time);
 			k3.abbildung(g, Color.BLUE);
 			
 			s1.xPosS(time,k1,k2);
 			s1.abbildung(g);
 			s2.xPosS(time,k3, k2);
-			//s2.abbildung(g);
+			s2.abbildung(g);
 			s3.xPosS(time,k3, k1);
 			s3.abbildung(g);
 		}

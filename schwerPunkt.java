@@ -24,13 +24,17 @@ public class schwerPunkt {
 		this.xP=(int)(1/(k1.m+k2.m)*(k1.m*(k1.startX+k1.mittel)+k2.m*(k2.startX+k2.mittel))+(1/(k1.m+k2.m)*(k1.m*k1.v+k2.m*k2.v))*(t-k1.deltaTime));
 		
 		if(xPosS<=k2.r+k1.r) {
+			double q;
 			double v1=k1.v;
 			double v2=k2.v;
 			k1.v=((k1.m-this.el*k2.m)*v1+k2.m*(1+this.el)*v2)/(k1.m+k2.m);
 			k2.v=(k1.m*(1+this.el)*v1+(k2.m-this.el*k1.m)*v2)/(k1.m+k2.m);
+			//q=(0.5)*k1.m*(v1*v1)+(0.5)*k2.m*(v2*v2)-(0.5)*k1.m*(k1.v*k1.v)-(0.5)*k2.m*(k2.v*k2.v);
+			q=(0.5)*((k1.m*k2.m)/(k1.m+k2.m))*(1-el)*((v2-v1)*(v2-v1));
 			
-			System.out.println(k1.name + " Geschwindigkeit " + k1.v);
-			System.out.println(k2.name + " Geschwindigkeit " + k2.v);
+			System.out.println(k1.name + " Geschwindigkeit " + (int)k1.v);
+			System.out.println(k2.name + " Geschwindigkeit " + (int)k2.v);
+			System.out.println("Der Energieverlust beträgt: " + q);
 			
 			k1.startX=(int)k1.xPos+1;
 			k2.startX=(int)k2.xPos-1;

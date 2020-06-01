@@ -46,7 +46,7 @@ public class Kugel {
 		return r;
 	}
 	
-	public void xPos(double _t, Kugel kont1, Kugel kont2) {
+	public void xPos(double _t) {
 		xPos=startX+((_t-deltaTime)*v);
 		if(xPos+d>=width) {
 			System.out.println(this.name + " hat die Wand berührt");
